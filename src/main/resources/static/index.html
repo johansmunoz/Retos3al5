@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Demo</title>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <link rel="stylesheet" type="text/css" href="/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<!---->
+    <script type="text/javascript" src="/misFunciones.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    
+</head>
+
+<body>
+<!--CODIGO AGREGADO SEGUN EL ISNTRUCTIVO PARA EL RETO 4 Y OAUTH2-->
+<h1>#Misionttic 2022</h1>
+<!--primera parte body out-->
+<div class="container unauthenticated">
+<!--Para iniciar sesion con Github-->
+<a href="/oauth2/authorization/github">haz click</a>
+</div>
+<div class="container authenticated" style="display:none">
+Autenticado como:<span id="user"></span>
+</div>
+<h2> Retos 3, 4 y 5!!! &#128561 &#128561 &#128557 &#128557 &#129321 &#129321 - &#128591</h2>
+
+<h2>Categoria (Category)</h2>
+    <div id="resultado1"></div>
+    <script type="text/javascript"> 
+    window.onload = autoInicioCategoria();
+    </script>
+    <div>
+        <input type="text" id="Caname" placeholder="nombre">
+        <input type="text" id="Cadescription" placeholder="descripcion">
+  
+    </div>
+    <button onclick="guardarInformacionCategorias()">Guardar Categorias</button>
+<!--Tabla cabinas-->   
+    <h2>Cabaña(Cabin) &#x1f3e0</h2>
+    <div id="resultado2"></div>
+    <script type="text/javascript">
+    window.onload = autoInicioCabin();
+    window.onload=autoInicioReserva();
+    </script>
+    <div>
+        <input type="text" id="Cname" placeholder="nombre">
+        <input type="text" id="Cbrand" placeholder="marca">
+        <input type="number" id="Crooms" placeholder="habitaciones">
+        <input type="text" id="Cdescription" placeholder="descripcion">
+        <select id="select-category"></select>
+
+        </div>
+        <button onclick="guardarInformacionCabin()">Guardar Cabaña</button>
+
+        <!--Tabla Cliente-->
+    <h2>Cliente &#x1f47f</h2>
+    <div id="resultado3"></div>
+    <script type="text/javascript">
+    window.onload=autoInicioCliente();
+    window.onload=autoInicioReserva();
+    </script>
+    <div>
+        <input type="email" id="Clemail" placeholder="email">
+        <input type="password" id="Clpassword" placeholder="Contraseña">
+        <input type="text" id="Clname" placeholder="nombre">
+        <input type="number" id="Clage" placeholder="edad">
+        </div>
+    <button onclick="guardarInformacionCliente()">Guardar Clientes</button>
+
+            <!--Tabla Mensajes-->
+    <h2>Mensajes &#x1f48c</h2>
+    <div id="resultado4"></div>
+    <script type="text/javascript">
+    window.onload=autoInicioMensajes();
+    </script>
+    <div>
+        <input type="text" id="messageText" placeholder="mensaje">
+        <select id="select-client"></select>
+        <select id="select-cabin"></select>
+        </div>
+    <button onclick="guardarMensaje()">Guardar Mensaje</button>
+
+                <!--Tabla Reserva-->
+    <h2>Reserva &#x1f4c6</h2>
+    <div id="resultado5"></div>
+    <script type="text/javascript">
+    window.onload=autoInicioReserva();
+    </script>
+    <div>
+        <input type="date" id="startDate" placeholder="AAAA/MM/DD">
+        <br><br>
+        <input type="date" id="devolutionDate" placeholder="AAAA/MM/DD">
+        <select id="select-client"></select>
+        <select id="select-cabin"></select>
+        </div>
+
+    <button onclick="guardarReserva()">Guardar Reserva</button>
+<!--Formulario de Reportes-->
+    <h2>Reportes &#x1f4c8</h2>
+    <button onclick="traerReporteStatus()"> Generar Reporte Status Reservas </button>
+    <div id="resultadoStatus"></div>
+
+    <input type="date" id="startDate" placeholder="descripcion">
+    <input type="date" id="devolutionDate" placeholder="descripcion">
+    <button onclick="traerReporteDate()"> Generar Reporte por fecha </button>
+    <div id="resultadoDate"></div>
+
+    <button onclick="traerReporteClientes()"> Generar Reporte Clientes y Cantidad de reservas por cliente </button>
+    <div id="resultadoClientes"></div>
+
+</body>
+<script type="text/javascript">
+    $.get("/user", function (data){
+        $("#user").html(data.name);
+        $(".unauthenticated").hide()
+        $(".authenticated").show()  
+
+
+    });
+    </script>
+</html><!-- final -->

@@ -1,0 +1,23 @@
+body{
+    background-color: lightblue;
+}
+
+h1{
+    color: red;
+    margin-left:500px;
+}
+h2{
+    color: black;
+    margin-left:20px;
+}
+
+button{
+    background-color: gray;
+}
+
+div{
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
